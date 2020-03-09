@@ -1,15 +1,35 @@
 //判断是否是基本数据类型
-function isPrimitive(value){
-    return (
-        typeof value === 'string' ||
-        typeof value === 'number' ||
-        typeof value === 'symbol' ||
-        typeof value === 'boolean'
-    )
-}
+// function isPrimitive(value){
+//     return (
+//         typeof value === 'string' ||
+//         typeof value === 'number' ||
+//         typeof value === 'symbol' ||
+//         typeof value === 'boolean'
+//     )
+// }
+
 //判断是否是一个js对象
-function isObject(value){
-    return Object.prototype.toString.call(value) === '[object Object]'
+// function isObject(value){
+//     return Object.prototype.toString.call(value) === '[object Object]'
+// }
+//判断类型
+function type(value){
+    var ret = typeof(value);
+    var template = {
+        "[object Object]": "object",
+        "[object Array]": "array",
+        "[object Number]": "number - object",
+        "[object Boolean]": "boolean - object",
+        "[object String]": "string - object"
+    }
+    if(value === null){
+        return "null"
+    }else if(ret == 'object'){
+        var str = Object.prototype.toString.call(value)
+        return template[str]
+    }else {
+        return ret
+    }
 }
 
 //深拷贝一个值,解决循环引用的问题
@@ -19,13 +39,12 @@ function deepClone(value){
     function baseClone(value){
         let res;    
         //如果是原始类型则直接返回
-        if(isPrimitive(value)){
+        if(type(value) !== "object"){
             return value
-        //如果是引用类型，我们浅拷贝一个新值代替原来的值
-        }else if(isObject(value)){
-            res = {...value}
-        }else if(Array.isArray(value)){
+        }else if(type(value)==="array"){
             res = [...value]
+        }else if(type(value)==="object"){
+            res = {...value}
         }
 
         Reflect.ownKeys(res).forEach((key)=>{
@@ -43,8 +62,34 @@ function deepClone(value){
         return res
     }
     return baseClone(value)
-
-}
+ }
+//source:原对象
+//target:克隆后的对象
+// let argS = [];
+// let argT = [];
+// let deepClone = source => {
+//     let target;
+//     let proto;
+//     if(type(source) !== "object"){
+//         return source
+//     }else if(type(source)==="array"){
+//         return target = []
+//     }else {
+//         proto = Object.getPrototypeOf(source);//拿到source原型对象
+//         target = Object.create(proto);//Object.create(原型:source的原型)
+//     }
+//     let index = argS.indexOf(source); //这项在数组中的索引
+//     if(index !== -1) {
+//         return target[index];
+//     }
+//     argS.push(source)
+//     argT.push(target)
+//     //对象内部的循环处理
+//     for(let i in source){
+//         target[i] = deepClone(source[i])
+//     }
+//     return target
+// }
 
 
 var obj = {};                                                                                          

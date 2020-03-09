@@ -60,7 +60,7 @@ Promise.prototype.then = function(onFullFilledFn,onRejectedFn){
                         reject(e)
                     }
                     
-                })
+                })             
                 this.failedCallbacks.push(()=>{
                     try{
                         setTimeout(()=>{

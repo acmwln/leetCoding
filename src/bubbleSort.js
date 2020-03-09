@@ -1,7 +1,10 @@
 //冒泡排序：将大值移动到数组右边，将小值移到数组的左边。
 bubbleSort = arr => {
+  //外层循环i控制比较的轮数
     for(let i = 0; i < arr.length-1; i++) {
-      for(let j = 0; j < arr.length-i-1; j++) {
+      //里层循环控制每一轮比较的次数
+      for(let j = 0; j < arr.length-1-i; j++) {
+        //当前项大于后一项
         if(arr[j] > arr[j+1]) {
           let temp = arr[j];
           arr[j] = arr[j+1];
