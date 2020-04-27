@@ -11,24 +11,42 @@
 
 
 //方法2:把数组直接变为字符串即可(数组toString之后,不管有多少级,最后都会变为以逗号分隔的字符串,没有中括号和所谓的层级了,相当于直接的扁平化了)
-// function arrayFlatAndUnique(arr){
-//     arr = arr.toString().split(',').map(item=>{
-//         return Number(item)
-//     })
-//     return [...new Set(arr)]
-// }
+function arrayFlatAndUnique(arr){
+    arr = arr.toString().split(',').map(item=>{
+        return Number(item)
+    })
+    let map = new Map();
+    let array = new Array();
+
+    for(let i=0;i<arr.length;i++){
+        if(map.has(arr[i])){
+            map.set(arr[i],true)
+        }else{
+            map.set(arr[i],false)
+            array.push(arr[i])
+        }
+    }
+
+    // arr.reduce((prev,cur)=>{
+    //     prev.includes(cur) ? prev : [...prev,cur]
+    // },[])
+    console.log('去重后的数组',array,map)
+    return array
+}
+
+
 
 
 
 
 //方法3:
-function arrayFlatAndUnique(arr){
-    console.log('arr',arr)
-    arr = JSON.stringify(arr).replace(/\[|\]/g,'').split(',').map(item=>{
-        return Number(item)
-    })
-    return [...new Set(arr)]
-}
+// function arrayFlatAndUnique(arr){
+//     console.log('arr',arr)
+//     arr = JSON.stringify(arr).replace(/\[|\]/g,'').split(',').map(item=>{
+//         return Number(item)
+//     })
+//     return [...new Set(arr)]
+// }
 
 
 
