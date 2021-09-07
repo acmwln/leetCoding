@@ -23,3 +23,4 @@ function quickSort(arr){
 let arr = [12,8,15,16,1,24]
 arr = quickSort(arr);
 console.log('快速排序后的结果:',arr)
+

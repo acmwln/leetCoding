@@ -12,8 +12,10 @@ selectionSort = arr => {
       arr[min] = arr[i];
       arr[i] = temp;
     }
-    console.log('选择排序后的结果:',arr)
+    console.log('选择排序后的结果:',arr) //[0, 1, 2, 3, 7, 9]
     return arr;
   }
   let arr = [0,9,3,2,7,1]
   selectionSort(arr)
+
+

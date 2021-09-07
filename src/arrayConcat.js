@@ -1,6 +1,8 @@
 //let array1 = ['A1','A2','B1','B2','C1','C2','D1','D2']
 //let array2 = ['A','B','C','D']
 
+const { readyException } = require("jquery");
+
 //合并后的数组为:['A1','A2','A','B1','B2','B','C1','C2','C','D1','D2','D']
 
 

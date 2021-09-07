@@ -52,7 +52,6 @@ var levelOrder = function(root) {
         if (head.right !== null) {
             level.push(head.right)
         }
-        
         if (!stack.length && level.length) {
             res.push(level.map(node => node.val));
             stack = level.slice();

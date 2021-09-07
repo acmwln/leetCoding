@@ -19,7 +19,7 @@ let Promise = function(fn){
     let reject = (v) => {
         this.value = v;
         this.status = REJECTED;
-        this.failedCallbacks.forEach(fun => fn(this.value))
+        this.failedCallbacks.forEach(fn => fn(this.value))
 
     }
     try{
